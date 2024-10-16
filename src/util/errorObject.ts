@@ -3,6 +3,8 @@ import { THTTPError } from '../types/types'
 import responseMessage from '../constants/responseMessage'
 import { EApplicationEnvironment } from '../constants/application'
 import config from '../config/config'
+import logger from './logger'
+
 
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 export default (err: Error | unknown, req: Request, errorStatusCode: number = 500): THTTPError => {
@@ -18,9 +20,7 @@ export default (err: Error | unknown, req: Request, errorStatusCode: number = 50
         data: null,
         trace: err instanceof Error ? { error: err.stack } : null
     }
-
-    // eslint-disable-next-line no-console
-    console.info('Controller_ERROR', {
+    logger.info('Controller_ERROR', {
         meta: errorObj
     })
 
