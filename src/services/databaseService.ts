@@ -11,6 +11,8 @@ const connectionConfig = {
 
 
 
+
+
 async function connectToDatabase() {
     try {
         const connection = await mysql.createConnection(connectionConfig)
