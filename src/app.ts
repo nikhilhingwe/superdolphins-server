@@ -1,6 +1,7 @@
 import express, { Application, NextFunction, Request, Response } from 'express'
 import path from 'path'
 import router from './router/apiRouter'
+import hrRouter from './router/hrRouter'
 import globalErrorHandler from './middlewares/globalErrorHandler'
 import responseMessage from './constants/responseMessage'
 import httpError from './util/httpError'
@@ -21,6 +22,7 @@ app.use(cors({
 
 // Routes
 app.use('/api/v1', router)
+app.use('/api/v1/hr', hrRouter)
 
 // Global Error Handler
 app.use(globalErrorHandler)
